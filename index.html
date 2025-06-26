@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MongoDB Queries</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      font-family: 'Courier New', monospace;
+      padding: 30px;
+    }
+    h1 {
+      text-align: center;
+      color: #00ffe7;
+      margin-bottom: 40px;
+    }
+    .question-box {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #2a2a2a;
+      border-left: 5px solid #00ffe7;
+    }
+    .question {
+      font-weight: bold;
+      color: #ffdd57;
+    }
+    .query {
+      color: #dcdcdc;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>MongoDB Queries</h1>
+
+  <div class="question-box">
+    <div class="question">1. Insert a single document into a collection named students with fields: name, age, and course.</div>
+    <div class="query">db.students.insertOne({ name: "Rahul", age: 21, course: "CS" });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">2. Insert multiple documents into the employees collection with fields: name, salary, and department.</div>
+    <div class="query">db.employees.insertMany([<br>
+      &nbsp;&nbsp;{ name: "John", salary: 35000, department: "HR" },<br>
+      &nbsp;&nbsp;{ name: "Sara", salary: 45000, department: "Tech" }<br>
+    ]);</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">3. Find all documents from the products collection.</div>
+    <div class="query">db.products.find();</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">4. Find all documents in the users collection where age is greater than 25.</div>
+    <div class="query">db.users.find({ age: { $gt: 25 } });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">5. Find documents from the orders collection where status is either "pending" or "shipped".</div>
+    <div class="query">db.orders.find({ status: { $in: ["pending", "shipped"] } });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">6. Update the email field of a user where username is "john_doe" in the users collection.</div>
+    <div class="query">db.users.updateOne({ username: "john_doe" }, { $set: { email: "john@example.com" } });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">7. Delete a document from the students collection where roll is 101.</div>
+    <div class="query">db.students.deleteOne({ roll: 101 });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">8. Find all employees with salary greater than or equal to 30000 using a comparison operator.</div>
+    <div class="query">db.employees.find({ salary: { $gte: 30000 } });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">9. Retrieve all books where author is "Chetan Bhagat" and publishedYear is after 2010.</div>
+    <div class="query">db.books.find({ author: "Chetan Bhagat", publishedYear: { $gt: 2010 } });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">10. Count the number of documents in the customers collection where city is "Delhi".</div>
+    <div class="query">db.customers.countDocuments({ city: "Delhi" });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">11. Find the first 5 users from the users collection using limit().</div>
+    <div class="query">db.users.find().limit(5);</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">12. Skip the first 10 documents and retrieve the next 5 from the logs collection.</div>
+    <div class="query">db.logs.find().skip(10).limit(5);</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">13. Sort all products in ascending order of price.</div>
+    <div class="query">db.products.find().sort({ price: 1 });</div>
+  </div>
+
+
+  <div class="question-box">
+    <div class="question">14. Sort users in descending order of createdAt date.</div>
+    <div class="query">db.users.find().sort({ createdAt: -1 });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">15. Retrieve only the name and email fields of users (hide _id).</div>
+    <div class="query">db.users.find({}, { name: 1, email: 1, _id: 0 });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">16. Find all students whose marks are between 60 and 90.</div>
+    <div class="query">db.students.find({ marks: { $gte: 60, $lte: 90 } });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">17. Retrieve all documents from the sales collection where the amount is less than 500 or greater than 5000.</div>
+    <div class="query">db.sales.find({ $or: [ { amount: { $lt: 500 } }, { amount: { $gt: 5000 } } ] });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">18. Update the status to "completed" for all orders where deliveryDate is not null.</div>
+    <div class="query">db.orders.updateMany({ deliveryDate: { $ne: null } }, { $set: { status: "completed" } });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">19. Delete all inactive users from the users collection where active is false.</div>
+    <div class="query">db.users.deleteMany({ active: false });</div>
+  </div>
+
+  <div class="question-box">
+    <div class="question">20. Find users who are either from "Bangalore" or have age greater than 30 using a logical $or operator.</div>
+    <div class="query">db.users.find({ $or: [ { city: "Bangalore" }, { age: { $gt: 30 } } ] });</div>
+  </div>
+
+</body>
+</html>
